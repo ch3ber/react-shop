@@ -1,12 +1,12 @@
 import React from 'react'
-import { Header } from '../components/Header'
-import { ProductItem } from '../components/ProductItem'
+import { Header } from '@components/Header'
+import { ProductList } from '@containers/ProductList'
 
 export const Home = () => {
   return (
     <>
       <Header />
-      <ProductItem />
+      <ProductList />
     </>
   )
 }
