@@ -11,7 +11,7 @@ import shoppingCart from '@icons/icon_shopping_cart.svg'
 export const Header = () => {
   const [toggle, setToggle] = useState(false)
   const [toggleOrders, setToggleOrders] = useState(false)
-  const { state } = useContext(AppContext)
+  const { getAllCountProducts } = useContext(AppContext)
 
   const handleToggle = () => {
     setToggle(!toggle)
@@ -55,7 +55,7 @@ export const Header = () => {
             onClick={() => setToggleOrders(!toggleOrders)}
           >
             <img src={shoppingCart} alt='shopping cart' />
-            {state.cart.length > 0 && <div>{state.cart.length}</div>}
+            {getAllCountProducts() > 0 && <div>{getAllCountProducts()}</div>}
           </li>
         </ul>
       </div>

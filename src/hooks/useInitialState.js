@@ -13,12 +13,11 @@ export const useInitialState = () => {
   const [state, setState] = useState(initialState)
 
   const addToCart = (payload) => {
-    console.log(payload)
     const isProductInCart = state.cart.some(
       (item) => item.title === payload.title
     )
+
     if (isProductInCart) {
-      console.log(state.countProducts[payload.title])
       const countProduct = state.countProducts[payload.title]
       setState({
         ...state,
@@ -27,7 +26,9 @@ export const useInitialState = () => {
           [payload.title]: countProduct + 1
         }
       })
-    } else {
+    }
+
+    if (!isProductInCart) {
       setState({
         ...state,
         countProducts: {
@@ -37,21 +38,23 @@ export const useInitialState = () => {
         cart: [...state.cart, payload]
       })
     }
-    console.log(state.countProducts)
-  }
-
-  const getProductCount = (product) => {
-    return state.countProducts[product.title]
   }
 
   const removeFromCart = (payload) => {
     const countProduct = state.countProducts[payload.title]
-    if (countProduct === 1) {
+    const isLastProduct = countProduct === 1
+    if (isLastProduct) {
       setState({
         ...state,
-        cart: state.cart.filter((item) => item.id !== payload.id)
+        cart: state.cart.filter((item) => item.id !== payload.id),
+        countProducts: {
+          ...state.countProducts,
+          [payload.title]: 0
+        }
       })
-    } else {
+    }
+
+    if (!isLastProduct) {
       setState({
         ...state,
         countProducts: {
@@ -62,10 +65,24 @@ export const useInitialState = () => {
     }
   }
 
+  const getCountProduct = (product) => {
+    return state.countProducts[product.title]
+  }
+
+  const getAllCountProducts = () => {
+    const products = Object.values(state.countProducts)
+    let count = 0
+    products.forEach((productCount) => {
+      count += productCount
+    })
+    return count
+  }
+
   return {
     state,
     addToCart,
     removeFromCart,
-    getProductCount
+    getCountProduct,
+    getAllCountProducts
   }
 }

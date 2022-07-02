@@ -4,7 +4,7 @@ import closeIcon from '@icons/icon_close.png'
 import { AppContext } from '../context/AppContext'
 
 export const OrderItem = ({ product }) => {
-  const { removeFromCart, getProductCount } = useContext(AppContext)
+  const { removeFromCart, getCountProduct } = useContext(AppContext)
 
   return (
     <div className='OrderItem'>
@@ -12,7 +12,7 @@ export const OrderItem = ({ product }) => {
         <figure>
           <img src={product.images[0]} alt={product.title} />
         </figure>
-        <span>{getProductCount(product)}</span>
+        <span>{getCountProduct(product)}</span>
       </div>
       <p>{product.title}</p>
       <p>${product.price}</p>
