@@ -10,8 +10,9 @@ export const MyOrder = () => {
   const sumTotal = () => {
     let total = 0
     state.cart.forEach((product) => {
-      total += product.price
+      total += product.price * state.countProducts[product.title]
     })
+
     return total
   }
   sumTotal()

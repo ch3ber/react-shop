@@ -1,25 +1,42 @@
-@import 'vars';
+@import "vars";
 
 .OrderItem {
-	display: grid;
-	grid-template-columns: auto 1fr auto auto;
-	gap: 16px;
-	margin-bottom: 24px;
-	align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
 }
-.OrderItem figure {
-	margin: 0;
+.OrderItem-image {
+  position: relative;
 }
-.OrderItem figure img {
-	width: 70px;
-	height: 70px;
-	border-radius: 20px;
-	object-fit: cover;
+.OrderItem-image span {
+  width: 16px;
+  height: 16px;
+  background-color: var(--hospital-green);
+  border-radius: 50%;
+  font-size: var(--sm);
+  font-weight: bold;
+  position: absolute;
+  top: -6px;
+  right: -3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.OrderItem-image figure {
+  margin: 0;
+}
+.OrderItem-image figure img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  object-fit: cover;
 }
 .OrderItem p:nth-child(2) {
-	color: var(--very-light-pink);
+  color: var(--very-light-pink);
 }
 .OrderItem p:nth-child(3) {
-	font-size: var(--md);
-	font-weight: bold;
+  font-size: var(--md);
+  font-weight: bold;
 }
