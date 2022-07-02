@@ -6,7 +6,7 @@ export const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const formData = new FormData(form.current)
+    const formData = new window.FormData(form.current)
     const data = {
       userName: formData.get('email'),
       password: formData.get('password')
