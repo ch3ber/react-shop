@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'react-shop/bundle.[hash].js',
-    publicPath: '/react-shop'
+    publicPath: './'
   },
   mode: 'development',
   resolve: {
@@ -36,7 +36,10 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        type: 'asset'
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/[name].[hash][ext]'
+        }
       }
     ]
   },
