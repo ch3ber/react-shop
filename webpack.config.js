@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'react-shop/bundle.js',
+    filename: 'react-shop/bundle.[hash].js',
     publicPath: '/react-shop'
   },
   mode: 'development',
@@ -46,7 +46,7 @@ module.exports = {
       filename: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[contenthash].css'
     })
   ],
   devServer: {
